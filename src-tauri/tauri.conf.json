@@ -2,12 +2,12 @@
   "build": {
     "beforeDevCommand": "yarn dev",
     "beforeBuildCommand": "yarn build",
-    "devPath": "http://localhost:1420",
+    "devPath": "http://localhost:1420/app/chat",
     "distDir": "../dist",
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "one-chat",
+    "productName": "1chat",
     "version": "0.0.0"
   },
   "tauri": {
@@ -16,6 +16,9 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "startDragging": true
       }
     },
     "bundle": {
@@ -40,10 +43,20 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "one-chat",
+        "title": "",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "minHeight": 600,
+        "minWidth": 600,
+        "transparent": true
       }
-    ]
+    ],
+    "macOSPrivateApi": true,
+    "systemTray": {
+      "iconPath": "icons/tray/icon.png",
+      "iconAsTemplate": true
+    }
   }
 }

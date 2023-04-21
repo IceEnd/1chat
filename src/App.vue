@@ -1,52 +1,37 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import Greet from "./components/Greet.vue";
-</script>
-
 <template>
-  <div class="container">
-    <h1>Welcome to Tauri!</h1>
-
-    <div class="row">
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo vite" alt="Vite logo" />
-      </a>
-      <a href="https://tauri.app" target="_blank">
-        <img src="/tauri.svg" class="logo tauri" alt="Tauri logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-      </a>
-    </div>
-
-    <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
-
-    <p>
-      Recommended IDE setup:
-      <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-      +
-      <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-      +
-      <a href="https://github.com/tauri-apps/tauri-vscode" target="_blank"
-        >Tauri</a
-      >
-      +
-      <a href="https://github.com/rust-lang/rust-analyzer" target="_blank"
-        >rust-analyzer</a
-      >
-    </p>
-
-    <Greet />
-  </div>
+  <el-config-provider :locale="locale">
+    <router-view />
+  </el-config-provider>
 </template>
 
-<style scoped>
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
-}
+<script setup lang="ts">
+import { computed, onMounted } from 'vue';
+import { invoke } from '@tauri-apps/api/tauri';
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import en from 'element-plus/lib/locale/lang/en';
+import { useSystemStore } from '@/store/system';
+import { Language, TauriCommand } from '@/constants';
 
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #249b73);
-}
-</style>
+const { config, update } = useSystemStore();
+
+const locale = computed(() => {
+  switch (config.locale) {
+    case Language.EN:
+      return en;
+    case Language.ZH_CN:
+      return zhCn;
+    default:
+      return en;
+  }
+});
+
+onMounted(async () => {
+  try {
+    const data = await invoke(TauriCommand.SystemReadConfig) as string;
+    const payload = JSON.parse(data);
+    update(payload);
+  } catch (error) {
+    console.error('读取系统配置失败', error);
+  }
+});
+</script>
