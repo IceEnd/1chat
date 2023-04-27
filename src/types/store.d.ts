@@ -10,3 +10,22 @@ declare namespace AppSystem {
     fontSize: number,
   }
 }
+
+declare namespace ChatSession {
+  interface ISession {
+    id: string,
+    name: string,
+    created: number,
+    latest: number,
+    messages: IMessage[],
+  }
+
+  interface IMessage {
+    id: string,
+    role: import('@/constants').Role,
+    model?: import('@/constants').Model,
+    created: number,
+    content: string,
+    generating?: boolean,
+  }
+}

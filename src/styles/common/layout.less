@@ -2,6 +2,10 @@
   display: block;
 }
 
+.d-inline-block {
+  display: inline-block;
+}
+
 .d-flex {
   display: flex;
 }
@@ -14,12 +18,12 @@
   flex-direction: column !important;
 }
 
-.flex-items-center {
-  align-items: center !important;
+.flex-row-reverse {
+  flex-direction: row-reverse !important;
 }
 
-.d-inline-block {
-  display: inline-block;
+.flex-items-center {
+  align-items: center !important;
 }
 
 .w-full {
@@ -66,25 +70,17 @@
 
 // 圆角
 .br-small {
-  border-radius: var(--ab-border-radius-small) !important;
+  border-radius: var(--border-radius-small) !important;
 }
 
 .br-regular {
-  border-radius: var(--ab-border-radius-regular) !important;
+  border-radius: var(--order-radius-regular) !important;
 }
 
 .br-large {
-  border-radius: var(--ab-border-radius-large) !important;
+  border-radius: var(--border-radius-large) !important;
 }
 
 .br-circle {
-  border-radius: var(--ab-border-radius-circle) !important;
-}
-
-.card-shadow {
-  box-shadow: var(--ab-card-shadow-down);
-}
-
-.page-container {
-  background-color: var(--ab-color-white-10);
+  border-radius: var(--border-radius-circle) !important;
 }

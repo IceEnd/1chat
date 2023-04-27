@@ -42,23 +42,23 @@
 .m-left(72);
 
 // 左右间距
-.m-lr(@n, @i: 0) when (@i =< @n) {
-  .mlr-@{i} {
+.m-horz(@n, @i: 0) when (@i =< @n) {
+  .mhorz-@{i} {
     margin-left: @i + 0px;
     margin-right: @i + 0px;
   }
-  .m-lr(@n, (@i + 2));
+  .m-horz(@n, (@i + 2));
 }
 
-.m-lr(72);
+.m-horz(72);
 
 // 上下间距
-.m-tb(@n, @i: 0) when (@i =< @n) {
-  .mtb-@{i} {
+.m-vert(@n, @i: 0) when (@i =< @n) {
+  .mvert-@{i} {
     margin-top: @i + 0px;
     margin-bottom: @i + 0px;
   }
-  .m-tb(@n, (@i + 2));
+  .m-vert(@n, (@i + 2));
 }
 
-.m-tb(72);
+.m-vert(72);

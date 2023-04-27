@@ -15,6 +15,7 @@ const APP_ROUTES: RouteRecordRaw = {
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: '/', redirect: { name: ViewKey.Chat } },
     APP_ROUTES,
   ],
 });

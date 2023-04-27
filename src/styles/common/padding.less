@@ -45,7 +45,7 @@
 // 四周边距
 .p-all(@n, @i: 0) when (@i =< @n) {
   .pd-@{i} {
-    padding: @i + 0px;
+    padding: @i + 0px !important;
   }
   .p-all(@n, (@i + 2));
 }
@@ -53,23 +53,23 @@
 .p-all(72);
 
 // 左右边距
-.p-lr(@n, @i: 0) when (@i =< @n) {
-  .plr-@{i} {
-    padding-left: @i + 0px;
-    padding-right: @i + 0px;
+.p-horz(@n, @i: 0) when (@i =< @n) {
+  .phorz-@{i} {
+    padding-left: @i + 0px !important;
+    padding-right: @i + 0px !important;
   }
-  .p-lr(@n, (@i + 2));
+  .p-horz(@n, (@i + 2));
 }
 
-.p-lr(72);
+.p-horz(72);
 
 // 上下边距
-.p-tb(@n, @i: 0) when (@i =< @n) {
-  .ptb-@{i} {
+.p-vert(@n, @i: 0) when (@i =< @n) {
+  .pvert-@{i} {
     padding-top: @i + 0px;
     padding-bottom: @i + 0px;
   }
-  .p-tb(@n, (@i + 2));
+  .p-vert(@n, (@i + 2));
 }
 
-.p-tb(72);
+.p-vert(72);

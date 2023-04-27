@@ -1,9 +1,11 @@
 <template>
-  <div>
-    1chat
+  <div class="d-flex w-full h-full">
+    <session-list />
+    <chat />
   </div>
 </template>
 
 <script setup lang="ts">
-console.log(2333);
+import SessionList from './session-list.vue';
+import Chat from './chat.vue';
 </script>

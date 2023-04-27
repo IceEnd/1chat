@@ -1,8 +1,12 @@
 import { reactive, watch } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
+import { appWindow } from '@tauri-apps/api/window';
+import { defineStore } from 'pinia';
+import { useI18n } from 'vue-i18n';
 import { Language, Theme, TauriCommand } from '@/constants';
 
-export const useSystemStore = () => {
+export const useSystemStore = defineStore('system', () => {
+  const { locale } = useI18n();
   const config = reactive<AppSystem.IConfig>({
     openaiAPIKey: '',
     locale: takeLocale(navigator.language),
@@ -17,24 +21,38 @@ export const useSystemStore = () => {
     });
   };
 
-  // 监听主题更新
-  watch(() => config.theme, () => {
+  const handleChangeTheme = async (theme: Theme) => {
     const root = document.querySelector('html');
     Object.values(Theme).forEach(theme => root?.classList.remove(theme));
-    root?.classList.add(takeThemeValue(config.theme));
-  }, { immediate: true });
+    root?.classList.add(await takeThemeValue(theme));
+  };
+
+  // 监听主题更新
+  watch(() => config.theme, () => handleChangeTheme(config.theme), { immediate: true });
+
+  // 监听语言变更
+  watch(() => config.locale, () => locale.value = config.locale, {
+    immediate: true,
+  });
 
   watch(() => config, () => {
     invoke(TauriCommand.SystemWriteConfig, {
-      payload: JSON.stringify(config, null, 2),
+      config: JSON.stringify(config, null, 2),
     });
   }, { deep: true });
+
+  // 监听系统主题变更
+  appWindow.onThemeChanged(({ payload }) => {
+    if (config.theme === Theme.Auto) {
+      handleChangeTheme(payload as Theme);
+    }
+  });
 
   return {
     config,
     update,
   };
-};
+});
 
 // 设置语言
 const takeLocale = (locale: string): Language => {
@@ -53,10 +71,10 @@ const takeTheme = (theme: string | Theme) => {
 };
 
 // 获取主题值
-const takeThemeValue = (theme: Theme): Theme => {
+const takeThemeValue = async (theme: Theme): Promise<Theme> => {
   if (theme === Theme.Auto) {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    return mediaQuery.matches ? Theme.Dark : Theme.Light;
+    const result = await appWindow.theme();
+    return result as Theme;
   }
   return theme;
 };
