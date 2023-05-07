@@ -1,0 +1,34 @@
+/**
+ * 文本相关通用样式
+ */
+
+// 单行文本省略
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 多行文本省略
+.ellipsis(@n, @i: 2) when (@i =< @n) {
+  .ellipsis-@{i} {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @i;
+  }
+  .ellipsis(@n, (@i + 1));
+}
+
+.ellipsis(6);
+
+// 辅助信息文字
+.t-assist {
+  font-size: var(--font-size-1);
+  line-height: var(--lineheight-support-regular);
+  color: var(--el-text-color-placeholder);
+
+  &-loose {
+    line-height: var(--lineheight-support-loose);
+  }
+}

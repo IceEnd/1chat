@@ -1,0 +1,64 @@
+/**
+ * 外边距
+ */
+
+// 下间距
+.m-bottom(@n, @i: 0) when (@i =< @n) {
+  .mb-@{i} {
+    margin-bottom: @i + 0px;
+  }
+  .m-bottom(@n, (@i + 2));
+}
+
+.m-bottom(72);
+
+// 上间距
+.m-top(@n, @i: 0) when (@i =< @n) {
+  .mt-@{i} {
+    margin-top: @i + 0px;
+  }
+  .m-top(@n, (@i + 2));
+}
+
+.m-top(72);
+
+// 右间距
+.m-right(@n, @i: 0) when (@i =< @n) {
+  .mr-@{i} {
+    margin-right: @i + 0px;
+  }
+  .m-right(@n, (@i + 2));
+}
+
+.m-right(72);
+
+.m-left(@n, @i: 0) when (@i =< @n) {
+  .ml-@{i} {
+    margin-left: @i + 0px;
+  }
+  .m-left(@n, (@i + 2));
+}
+
+.m-left(72);
+
+// 左右间距
+.m-horz(@n, @i: 0) when (@i =< @n) {
+  .mhorz-@{i} {
+    margin-left: @i + 0px;
+    margin-right: @i + 0px;
+  }
+  .m-horz(@n, (@i + 2));
+}
+
+.m-horz(72);
+
+// 上下间距
+.m-vert(@n, @i: 0) when (@i =< @n) {
+  .mvert-@{i} {
+    margin-top: @i + 0px;
+    margin-bottom: @i + 0px;
+  }
+  .m-vert(@n, (@i + 2));
+}
+
+.m-vert(72);

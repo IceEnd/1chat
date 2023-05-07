@@ -7,15 +7,18 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "one-chat",
+    "productName": "1chat",
     "version": "0.0.0"
   },
   "tauri": {
     "allowlist": {
-      "all": false,
+      "all": true,
       "shell": {
         "all": false,
         "open": true
+      },
+      "window": {
+        "startDragging": true
       }
     },
     "bundle": {
@@ -40,10 +43,20 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "one-chat",
+        "title": "",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "minHeight": 600,
+        "minWidth": 600,
+        "transparent": true
       }
-    ]
+    ],
+    "macOSPrivateApi": true,
+    "systemTray": {
+      "iconPath": "icons/tray/icon.png",
+      "iconAsTemplate": true
+    }
   }
 }

@@ -1,0 +1,14 @@
+{
+  "OpenAI API Key": "OpenAI API Key",
+  "English": "English",
+  "Simplified Chinese": "Simplified Chinese",
+  "Theme": "Theme",
+  "Auto": "Auto",
+  "Light Mode": "Light Mode",
+  "Dark Mode": "Dark Mode",
+  "Settings": "Settings",
+  "Font Size": "Font Size",
+  "[Enter] send, [Shift+Enter] line break, [Ctrl+Enter] send without generating": "[Enter] send, [Shift+Enter] line break, [Ctrl+Enter] send without generating",
+  "copied to clipboard": "copied to clipboard",
+  "An error occurred, please retry": "An error occurred, please retry"
+}

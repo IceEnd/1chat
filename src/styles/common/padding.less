@@ -1,0 +1,75 @@
+/**
+ * 内边距
+ */
+
+// 下边距
+.p-bottom(@n, @i: 0) when (@i =< @n) {
+  .pb-@{i} {
+    padding-bottom: @i + 0px;
+  }
+  .p-bottom(@n, (@i + 2));
+}
+
+.p-bottom(72);
+
+// 上边距
+.p-top(@n, @i: 0) when (@i =< @n) {
+  .pt-@{i} {
+    padding-top: @i + 0px;
+  }
+  .p-top(@n, (@i + 2));
+}
+
+.p-top(72);
+
+// 右边距
+.p-right(@n, @i: 0) when (@i =< @n) {
+  .pr-@{i} {
+    padding-right: @i + 0px;
+  }
+  .p-right(@n, (@i + 2));
+}
+
+.p-right(72);
+
+// 左边距
+.p-left(@n, @i: 0) when (@i =< @n) {
+  .pl-@{i} {
+    padding-left: @i + 0px;
+  }
+  .p-left(@n, (@i + 2));
+}
+
+.p-left(72);
+
+// 四周边距
+.p-all(@n, @i: 0) when (@i =< @n) {
+  .pd-@{i} {
+    padding: @i + 0px !important;
+  }
+  .p-all(@n, (@i + 2));
+}
+
+.p-all(72);
+
+// 左右边距
+.p-horz(@n, @i: 0) when (@i =< @n) {
+  .phorz-@{i} {
+    padding-left: @i + 0px !important;
+    padding-right: @i + 0px !important;
+  }
+  .p-horz(@n, (@i + 2));
+}
+
+.p-horz(72);
+
+// 上下边距
+.p-vert(@n, @i: 0) when (@i =< @n) {
+  .pvert-@{i} {
+    padding-top: @i + 0px;
+    padding-bottom: @i + 0px;
+  }
+  .p-vert(@n, (@i + 2));
+}
+
+.p-vert(72);
