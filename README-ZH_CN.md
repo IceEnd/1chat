@@ -44,6 +44,6 @@
 - .AppImage: Linux
 - .msi: Windows
 
-## LICENSE
+## 开源许可
 
-[GNU GENERAL PUBLIC LICENSE © Alchemy](./LICENSE)
+[GNU GENERAL PUBLIC LICENSE © IceEnd](./LICENSE)

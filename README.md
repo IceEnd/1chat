@@ -46,5 +46,5 @@ Version description:
 
 ## LICENSE
 
-[GNU GENERAL PUBLIC LICENSE © Alchemy](./LICENSE)
+[GNU GENERAL PUBLIC LICENSE © IceEnd](./LICENSE)
 
