@@ -2,11 +2,11 @@
   <img src="./app-icon.png" width="200" />
   <h3 align="center">1chat</h3>
   <p align="center">
-    <span>English</span>
+    <a href="./README.md">English</a>
     <span>|</span>
-    <a href="./README-ZH_CN.md">简体中文</a>
+    <span>简体中文</span>
   </p>
-  <p align="center">A simpler and more user-friendly chatGPT Desktop.</p>
+  <p align="center">更加简单友好的 chatGPT 桌面端</p>
   <p align="center">
     <img src="https://img.shields.io/badge/platform-masOS%20%7C%20Linux%20%7C%20Windows-lightgrey.svg?style=for-the-badge" />
   </p>
@@ -27,13 +27,12 @@
 |:-------:|:-----:|
 | ![image](https://user-images.githubusercontent.com/11556339/236784044-fa4ea34f-dc18-4f2e-be45-5b485cd56a6d.png) | ![image](https://user-images.githubusercontent.com/11556339/236784204-428e7c29-0207-419f-acc3-b2bee2c15666.png) |
 
-## Features
+## 功能
 
-- Supports GPT-35-TURBO model
-- Simple and user-friendly interface
-- Locally saved conversations, no data loss
+- 支持 GPT-35-TURBO 模型
+- 简洁友好的界面
+- 本地保存的对话，不会丢失
 
 ## LICENSE
 
 [GNU GENERAL PUBLIC LICENSE © Alchemy](./LICENSE)
-

@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import 'github-markdown-css';
 import 'highlight.js/styles/atom-one-dark.css';
 import 'element-plus/es/components/notification/style/css';
 import { computed, onMounted } from 'vue';
