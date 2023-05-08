@@ -10,5 +10,6 @@
   "Font Size": "字体大小",
   "[Enter] send, [Shift+Enter] line break, [Ctrl+Enter] send without generating": "[回车键] 发送，[Shift+回车键] 换行, [Ctrl+回车键] 发送但不生成",
   "copied to clipboard": "已复制到剪贴板",
-  "An error occurred, please retry": "发生错误，请重试"
+  "An error occurred, please retry": "发生错误，请重试",
+  "Version": "版本"
 }

@@ -10,5 +10,6 @@
   "Font Size": "Font Size",
   "[Enter] send, [Shift+Enter] line break, [Ctrl+Enter] send without generating": "[Enter] send, [Shift+Enter] line break, [Ctrl+Enter] send without generating",
   "copied to clipboard": "copied to clipboard",
-  "An error occurred, please retry": "An error occurred, please retry"
+  "An error occurred, please retry": "An error occurred, please retry",
+  "Version": "Version"
 }

@@ -27,11 +27,22 @@
 |:-------:|:-----:|
 | ![image](https://user-images.githubusercontent.com/11556339/236784044-fa4ea34f-dc18-4f2e-be45-5b485cd56a6d.png) | ![image](https://user-images.githubusercontent.com/11556339/236784204-428e7c29-0207-419f-acc3-b2bee2c15666.png) |
 
-## Features
+## Features :hammer_and_wrench:
 
 - Supports GPT-35-TURBO model
 - Simple and user-friendly interface
 - Locally saved conversations, no data loss
+
+## Download :zap:
+
+Go to [Release](https://github.com/IceEnd/1chat/releases) to download the latest version.
+
+Version description:
+
+- aarch64.dmg: For MacOS M1/2 chip versions
+- x64.dmg: For MacOS Intel chip versions
+- .AppImage: For Linux
+- .msi: For Windows
 
 ## LICENSE
 

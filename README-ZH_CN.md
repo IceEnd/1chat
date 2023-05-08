@@ -27,11 +27,22 @@
 |:-------:|:-----:|
 | ![image](https://user-images.githubusercontent.com/11556339/236784044-fa4ea34f-dc18-4f2e-be45-5b485cd56a6d.png) | ![image](https://user-images.githubusercontent.com/11556339/236784204-428e7c29-0207-419f-acc3-b2bee2c15666.png) |
 
-## 功能
+## 功能 :hammer_and_wrench:
 
 - 支持 GPT-35-TURBO 模型
 - 简洁友好的界面
 - 本地保存的对话，不会丢失
+
+## 下载 :zap:
+
+前往 [Release](https://github.com/IceEnd/1chat/releases) 下载最新版本
+
+版本说明：
+
+- aarch64.dmg: 适用于 MacOS M1/2 芯片版本
+- x64.dmg: 适用于 MacOS Intel 芯片版本
+- .AppImage: Linux
+- .msi: Windows
 
 ## LICENSE
 

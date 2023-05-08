@@ -4,6 +4,7 @@
     width="420px"
     :title="$t('Settings')"
   >
+    <div class="pb-16">{{ $t('Version') }} {{ version }}</div>
     <el-form
       label-position="top"
       size="small"
@@ -50,8 +51,9 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, computed, Ref } from 'vue';
+import { ref, inject, computed, Ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { getVersion } from '@tauri-apps/api/app';
 import { Language, Theme } from '@/constants';
 import { useSystemStore } from '@/store/system';
 import { SETTINGS_VISIBLE } from './symbol';
@@ -59,6 +61,7 @@ import { SETTINGS_VISIBLE } from './symbol';
 const visible = inject(SETTINGS_VISIBLE) as Ref<boolean>;
 const { config } = useSystemStore();
 const { t } = useI18n();
+const version = ref('0.0.0');
 
 const LanguageOptions = computed(() => [{
   label: t('English'),
@@ -88,5 +91,13 @@ const FontSizeOptions = computed(() => {
     });
   }
   return options;
+});
+
+onMounted(async () => {
+  try {
+    version.value = await getVersion();
+  } catch {
+    // do nothing
+  }
 });
 </script>
