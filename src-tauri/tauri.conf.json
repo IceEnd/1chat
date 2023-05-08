@@ -39,7 +39,8 @@
     "updater": {
       "active": true,
       "endpoints": [
-          "https://gist.githubusercontent.com/IceEnd/78cb2db4a7ebedc7e1dbdcd966477a30/raw/3b62a338945930843797d555ed35e560da985b20/1chat_releases.json"
+        "https://oversea-1251190880.cos.accelerate.myqcloud.com/1chat/latest.json",
+        "https://gist.githubusercontent.com/IceEnd/710378622d3551b06a3540e206fdc10a/raw"
       ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEY1QjZDQUY4NDlGRENEMTgKUldRWXpmMUorTXEyOVJiODhJR05qYTZSeGV4Wm5EaGI5cXVjS2xRRnl6NTVCLzFMK1JqbDV4NnMK"

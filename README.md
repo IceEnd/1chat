@@ -14,8 +14,8 @@
     <a target="__blank" href="https://github.com/IceEnd/1chat/releases">
       <img src="https://img.shields.io/github/release/iceend/1chat.svg?style=for-the-badge" />
     </a>
-    <a target="__blank" href="https://github.com/IceEnd/vscode-artstation/actions">
-      <img src="https://github.com/IceEnd/1chat/actions/workflows/ci.yml/badge.svg?style=for-the-badge">
+    <a target="__blank" href="https://github.com/IceEnd/1chat/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/iceend/1chat/publish.yml?style=for-the-badge">
     </a>
     <a target="__blank" href="https://github.com/IceEnd/1chat/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/IceEnd/1chat.svg?style=for-the-badge" />
@@ -46,5 +46,5 @@ Version description:
 
 ## LICENSE
 
-[GNU GENERAL PUBLIC LICENSE © Alchemy](./LICENSE)
+[GNU GENERAL PUBLIC LICENSE © IceEnd](./LICENSE)
 
