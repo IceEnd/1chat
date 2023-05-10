@@ -1,7 +1,7 @@
 {
   "name": "1chat",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,8 +13,6 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "@tauri-apps/api": "^1.2.0",
-    "@vueuse/core": "^10.0.2",
-    "axios": "^1.3.6",
     "dayjs": "^1.11.7",
     "element-plus": "^2.3.3",
     "eventsource-parser": "^1.0.0",
@@ -36,6 +34,7 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.38.0",
     "eslint-plugin-vue": "^9.11.0",
+    "github-markdown-css": "^5.2.0",
     "highlight.js": "^11.8.0",
     "husky": "^8.0.3",
     "less": "^4.1.3",

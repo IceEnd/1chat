@@ -4,7 +4,7 @@
     width="420px"
     :title="$t('Settings')"
   >
-    <div class="pb-16">{{ $t('Version') }} {{ version }}</div>
+    <el-divider content-position="left">{{ $t('Version') }} {{ version }}</el-divider>
     <el-form
       label-position="top"
       size="small"
@@ -14,7 +14,7 @@
         <el-input type="password" v-model="config.openaiAPIKey" />
       </el-form-item>
 
-      <el-form-item :label="t('Language')">
+      <el-form-item :label="$t('Language')">
         <el-select v-model="config.locale">
           <el-option
             v-for="lang in LanguageOptions"
@@ -46,6 +46,23 @@
           />
         </el-select>
       </el-form-item>
+
+      <el-divider content-position="left">{{ $t('Proxy & Model') }}</el-divider>
+
+      <el-form-item :label="$t('API Host')">
+        <el-input v-model="config.host" />
+      </el-form-item>
+
+      <el-form-item :label="$t('Model')">
+        <el-select v-model="config.model">
+          <el-option
+            v-for="model in ModelOptions"
+            :key="model.value"
+            :label="model.label"
+            :value="model.value"
+          ></el-option>
+        </el-select>
+      </el-form-item>
     </el-form>
   </el-dialog>
 </template>
@@ -54,7 +71,7 @@
 import { ref, inject, computed, Ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { getVersion } from '@tauri-apps/api/app';
-import { Language, Theme } from '@/constants';
+import { Language, Theme, Model } from '@/constants';
 import { useSystemStore } from '@/store/system';
 import { SETTINGS_VISIBLE } from './symbol';
 
@@ -92,6 +109,14 @@ const FontSizeOptions = computed(() => {
   }
   return options;
 });
+
+const ModelOptions = computed(() => Object.keys(Model).map((key) => {
+  const v = Model[key as keyof typeof Model];
+  return {
+    label: v,
+    value: v,
+  };
+}));
 
 onMounted(async () => {
   try {

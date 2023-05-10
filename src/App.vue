@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import 'highlight.js/styles/atom-one-dark.css';
+import 'github-markdown-css';
 import 'element-plus/es/components/notification/style/css';
 import { computed, onMounted } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';

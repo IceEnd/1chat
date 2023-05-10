@@ -22,6 +22,10 @@ const emits = defineEmits<{
 }>();
 
 const handleKeyDown = (e: KeyboardEvent) => {
+  if (e.keyCode === 229) {
+    // 中文输入法的回车当作确认
+    return;
+  }
   handleWrap(e)
   || handleOnlySender(e)
   || handleSender(e);
@@ -45,7 +49,9 @@ const handleOnlySender = (e: KeyboardEvent) => {
 };
 
 const handleSender = (e: KeyboardEvent) => {
-  if (e.code === 'Enter') {
+  if (e.code === 'Enter' && !e.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey) {
+    console.log(2333);
+    console.log(e.isComposing);
     sendMessage(e);
     return true;
   }
@@ -55,8 +61,12 @@ const handleSender = (e: KeyboardEvent) => {
 
 // 发送消息
 const sendMessage = (e: KeyboardEvent, generate = true) => {
+  const content = message.value.trim();
+  if (!content) {
+    return;
+  }
   e.preventDefault();
-  emits('submit', message.value, generate);
+  emits('submit', content, generate);
   message.value = '';
   (e.target as HTMLInputElement).setSelectionRange(0, 0);
 };
