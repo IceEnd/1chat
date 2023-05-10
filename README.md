@@ -29,7 +29,8 @@
 
 ## Features :hammer_and_wrench:
 
-- Supports GPT-35-TURBO model
+- Supports GPT-4 and other models
+- Supports configuring proxies
 - Simple and user-friendly interface
 - Locally saved conversations, no data loss
 
