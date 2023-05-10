@@ -40,5 +40,12 @@ export enum Role {
 
 export enum Model {
   GPT_35_TURBO = 'gpt-3.5-turbo',
+  GPT_35_TURBO_0301 = 'gpt-3.5-turbo-0301',
   GPT_4 = 'gpt-4',
+  GPT_4_0314 = 'gpt-4-0314',
+  GPT_4_32K = 'gpt-4-32k',
+  GPT_4_32K_0314 = 'gpt-4-32k-0314',
 }
+
+// 默认代理
+export const DEFAULT_HOST = 'https://api.openai.com';

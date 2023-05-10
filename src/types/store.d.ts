@@ -7,6 +7,8 @@ declare namespace AppSystem {
     openaiAPIKey: string,
     locale: import('@/constants').Language,
     theme: import('@/constants').Theme,
+    model: import('@/constants').Model,
+    host: string,
     fontSize: number,
   }
 }

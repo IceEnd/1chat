@@ -22,7 +22,7 @@ import { v4 } from 'uuid';
 import { useI18n } from 'vue-i18n';
 import { useSessionStore, useSystemStore } from '@/store';
 import { completion, IOnTextCallbackResult } from '@/client';
-import { Role, Model } from '@/constants';
+import { Role } from '@/constants';
 import { namePrompts } from '@/prompts';
 import Empty from './empty.vue';
 import Toolbar from './toolbar.vue';
@@ -77,7 +77,7 @@ const handleReceive = async (messageId?: string) => {
       role: Role.Assistant,
       created: Date.now(),
       content: '...',
-      model: Model.GPT_35_TURBO,
+      model: systemStore.config.model,
       generating: true,
     };
     sessionStore.insertMessage(wrap);
@@ -85,7 +85,7 @@ const handleReceive = async (messageId?: string) => {
     // 具备ID则是重新生成的
     // 更新文本与状态
     sessionStore.updateMessage(id, {
-      model: Model.GPT_35_TURBO,
+      model: systemStore.config.model,
       generating: true,
       content: '...',
     });
@@ -99,7 +99,8 @@ const handleReceive = async (messageId?: string) => {
     await completion(
       {
         token: systemStore.config.openaiAPIKey,
-        model: Model.GPT_35_TURBO,
+        host: systemStore.config.host,
+        model: systemStore.config.model,
         messages,
       },
       generateOnText(id),
@@ -162,7 +163,8 @@ watch(() => session.value, async () => {
   try {
     const name = await completion({
       token: systemStore.config.openaiAPIKey,
-      model: Model.GPT_35_TURBO,
+      host: systemStore.config.host,
+      model: systemStore.config.model,
       messages: namePrompts(session.value.messages.slice(0, 3)),
     });
     sessionStore.updateSession({

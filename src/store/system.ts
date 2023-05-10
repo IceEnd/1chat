@@ -3,7 +3,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { appWindow } from '@tauri-apps/api/window';
 import { defineStore } from 'pinia';
 import { useI18n } from 'vue-i18n';
-import { Language, Theme, TauriCommand } from '@/constants';
+import { Language, Theme, TauriCommand, DEFAULT_HOST, Model } from '@/constants';
 
 export const useSystemStore = defineStore('system', () => {
   const { locale } = useI18n();
@@ -12,6 +12,8 @@ export const useSystemStore = defineStore('system', () => {
     locale: takeLocale(navigator.language),
     theme: takeTheme(Theme.Auto),
     fontSize: 13,
+    host: DEFAULT_HOST,
+    model: Model.GPT_35_TURBO,
   });
 
   const update = (payload: AppSystem.IConfig) => {

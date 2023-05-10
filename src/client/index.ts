@@ -2,6 +2,7 @@
  * OpenAI API
  */
 import { createParser } from 'eventsource-parser';
+import { DEFAULT_HOST } from '@/constants';
 
 export interface IOnTextCallbackResult {
   // 返回的文本
@@ -37,7 +38,7 @@ export const completion = async (
   }));
   try {
     const response = await fetch(
-      'https://api.openai.com/v1/chat/completions', {
+      `${request.host || DEFAULT_HOST}/v1/chat/completions`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${request.token}`,
@@ -74,7 +75,6 @@ export const completion = async (
   }
   return fullText;
 };
-
 
 // 处理 server-sent events/eventsource,
 const handleSSE = async (

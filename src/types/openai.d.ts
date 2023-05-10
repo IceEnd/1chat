@@ -6,6 +6,7 @@ declare namespace OpenAI {
   namespace ChatCompletions {
     interface Request {
       token: string,
+      host: string,
       model: import('@/constants').Model,
       messages: IMessage[],
     }
