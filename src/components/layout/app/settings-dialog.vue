@@ -1,69 +1,74 @@
 <template>
   <el-dialog
+    center
+    align-center
+    append-to-body
     v-model="visible"
-    width="420px"
+    
     :title="$t('Settings')"
   >
-    <el-divider content-position="left">{{ $t('Version') }} {{ version }}</el-divider>
-    <el-form
-      label-position="top"
-      size="small"
-      :model="config"
-    >
-      <el-form-item :label="$t('OpenAI API Key')">
-        <el-input type="password" v-model="config.openaiAPIKey" />
-      </el-form-item>
+    <el-scrollbar height="400px">
+      <el-divider content-position="left">{{ $t('Version') }} {{ version }}</el-divider>
+      <el-form
+        label-position="top"
+        size="small"
+        :model="config"
+      >
+        <el-form-item :label="$t('OpenAI API Key')">
+          <el-input type="password" v-model="config.openaiAPIKey" />
+        </el-form-item>
 
-      <el-form-item :label="$t('Language')">
-        <el-select v-model="config.locale">
-          <el-option
-            v-for="lang in LanguageOptions"
-            :key="lang.value"
-            :label="lang.label"
-            :value="lang.value"
-          />
-        </el-select>
-      </el-form-item>
+        <el-form-item :label="$t('Language')">
+          <el-select v-model="config.locale">
+            <el-option
+              v-for="lang in LanguageOptions"
+              :key="lang.value"
+              :label="lang.label"
+              :value="lang.value"
+            />
+          </el-select>
+        </el-form-item>
 
-      <el-form-item :label="$t('Theme')">
-        <el-select v-model="config.theme">
-          <el-option
-            v-for="theme in ThemeOptions"
-            :key="theme.value"
-            :label="theme.label"
-            :value="theme.value"
-          />
-        </el-select>
-      </el-form-item>
+        <el-form-item :label="$t('Theme')">
+          <el-select v-model="config.theme">
+            <el-option
+              v-for="theme in ThemeOptions"
+              :key="theme.value"
+              :label="theme.label"
+              :value="theme.value"
+            />
+          </el-select>
+        </el-form-item>
 
-      <el-form-item :label="$t('Font Size')">
-        <el-select v-model="config.fontSize">
-          <el-option
-            v-for="theme in FontSizeOptions"
-            :key="theme.value"
-            :label="theme.label"
-            :value="theme.value"
-          />
-        </el-select>
-      </el-form-item>
+        <el-form-item :label="$t('Font Size')">
+          <el-select v-model="config.fontSize">
+            <el-option
+              v-for="theme in FontSizeOptions"
+              :key="theme.value"
+              :label="theme.label"
+              :value="theme.value"
+            />
+          </el-select>
+        </el-form-item>
 
-      <el-divider content-position="left">{{ $t('Proxy & Model') }}</el-divider>
+        <el-divider content-position="left">{{ $t('Proxy & Model') }}</el-divider>
 
-      <el-form-item :label="$t('API Host')">
-        <el-input v-model="config.host" />
-      </el-form-item>
+        <el-form-item :label="$t('API Host')">
+          <el-input v-model="config.host" />
+        </el-form-item>
 
-      <el-form-item :label="$t('Model')">
-        <el-select v-model="config.model">
-          <el-option
-            v-for="model in ModelOptions"
-            :key="model.value"
-            :label="model.label"
-            :value="model.value"
-          ></el-option>
-        </el-select>
-      </el-form-item>
-    </el-form>
+        <el-form-item :label="$t('Model')">
+          <el-select v-model="config.model">
+            <el-option
+              v-for="model in ModelOptions"
+              :key="model.value"
+              :label="model.label"
+              :value="model.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+    </el-scrollbar>
   </el-dialog>
 </template>
 

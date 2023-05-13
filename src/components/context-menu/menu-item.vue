@@ -11,6 +11,7 @@
 
   &:hover {
     background-color: var(--el-color-primary);
+    color: var(--el-color-white);
   }
 }
 </style>
