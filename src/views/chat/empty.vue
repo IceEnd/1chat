@@ -10,7 +10,7 @@ import ChatRoundFilled from '@/assets/chat-round-filled.svg?skipsvgo';
 
 <style lang="less" scoped>
 .empty {
-  background-color: var(--app-nav-bg-color);
+  background-color: var(--chat-empty-bg-color);
 
   .chat-icon {
     color: var(--el-text-color-placeholder);

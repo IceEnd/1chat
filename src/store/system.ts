@@ -1,6 +1,7 @@
-import { reactive, watch } from 'vue';
+import { ref, reactive, watch } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
 import { appWindow } from '@tauri-apps/api/window';
+import { platform as getPlatform } from '@tauri-apps/api/os';
 import { defineStore } from 'pinia';
 import { useI18n } from 'vue-i18n';
 import { Language, Theme, TauriCommand, DEFAULT_HOST, Model } from '@/constants';
@@ -15,6 +16,7 @@ export const useSystemStore = defineStore('system', () => {
     host: DEFAULT_HOST,
     model: Model.GPT_35_TURBO,
   });
+  const platform = ref('');
 
   const update = (payload: AppSystem.IConfig) => {
     Object.assign(config, payload, {
@@ -50,8 +52,14 @@ export const useSystemStore = defineStore('system', () => {
     }
   });
 
+  getPlatform().then(value => {
+    document.querySelector('html')?.classList.add(value);
+    platform.value = value;
+  });
+
   return {
     config,
+    platform,
     update,
   };
 });
