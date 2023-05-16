@@ -13,7 +13,10 @@
           :class="['message ps-r pvert-8 phorz-16', message.role]"
           :key="message.id"
         >
-          <div class="date t-assist ta-c">{{ renderTime(index) }}</div>
+          <message-date
+            :latest="index > 0 ? session.messages[index - 1].created : undefined"
+            :current="message.created"
+          />
 
           <div :class="{
             'main d-flex': true,
@@ -112,12 +115,11 @@ import {
 } from '@element-plus/icons-vue';
 import { useI18n } from 'vue-i18n';
 import { useSystemStore, useSessionStore } from '@/store';
-import { getChatDate, renderMarkDown } from '@/utils';
+import { renderMarkDown } from '@/utils';
 import { Role } from '@/constants';
 import CatAvatar from '@/assets/default-avatar.jpg';
 import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from './symbol';
-
-const TIME_SPACE = 10 * 60 * 1000; // 十分钟间隔
+import MessageDate from './date.vue';
 
 const systemStore = useSystemStore();
 const sessionStore = useSessionStore();
@@ -132,20 +134,6 @@ const emits = defineEmits<{
   (e: 'cancel'): void,
   (e: 'refresh', id: string): void,
 }>();
-
-// 根据间隔来判断是否渲染时间
-const renderTime = (index: number): string => {
-  const current = session.value.messages[index].created;
-  if (index <= 0) {
-    return getChatDate(current);
-  }
-  const latest = session.value.messages[index - 1].created;
-
-  if (current - latest >= TIME_SPACE) {
-    return getChatDate(current);
-  }
-  return '';
-};
 
 const handleMouseEvent = () => {
   autoScrollToMessage.value = false;
@@ -264,11 +252,6 @@ defineExpose({
       opacity: 1;
     }
   }
-}
-
-.date {
-  user-select: none;
-  cursor: default;
 }
 
 .message-action {

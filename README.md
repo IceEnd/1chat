@@ -45,6 +45,12 @@ Version description:
 - .AppImage: For Linux
 - .msi: For Windows
 
+### Common Questions
+
+1. macOS prompts "Application is damaged" or "unidentified developer"
+
+This is because of not having an Apple developer account. You can follow the [instructions](https://iboysoft.com/news/app-is-damaged-and-cannot-be-opened.html) in this guide to resolve the issue.
+
 ## LICENSE
 
 [GNU GENERAL PUBLIC LICENSE © IceEnd](./LICENSE)

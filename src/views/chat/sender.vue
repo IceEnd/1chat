@@ -50,7 +50,6 @@ const handleOnlySender = (e: KeyboardEvent) => {
 
 const handleSender = (e: KeyboardEvent) => {
   if (e.code === 'Enter' && !e.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey) {
-    console.log(2333);
     console.log(e.isComposing);
     sendMessage(e);
     return true;

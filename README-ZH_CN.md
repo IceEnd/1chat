@@ -45,6 +45,12 @@
 - .AppImage: Linux
 - .msi: Windows
 
+## 常见问题
+
+1. macOS 提示：“应用程序 已损坏”，或者 “来自身分不明的开发者”
+
+因为没有苹果开发者账号导致的。可以按照[这篇指引](https://sysin.org/blog/macos-if-crashes-when-opening/)操作。
+
 ## 开源许可
 
 [GNU GENERAL PUBLIC LICENSE © IceEnd](./LICENSE)
