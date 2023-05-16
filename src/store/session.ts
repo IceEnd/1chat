@@ -37,7 +37,9 @@ export const useSessionStore = defineStore('session', () => {
     try {
       const [state, data] = await Promise.all(queue);
       active.value = JSON.parse(state as string).active;
-      sessions.value = (data as string[]).map(item => JSON.parse(item) as ChatSession.ISession);
+      sessions.value = (data as string[])
+        .map(item => JSON.parse(item) as ChatSession.ISession);
+      sortSession();
     } catch (error) {
       // do nothing
       console.error(error);
@@ -89,6 +91,7 @@ export const useSessionStore = defineStore('session', () => {
     }
     activeSession.value.latest = Date.now();
     activeSession.value.messages.push(payload);
+    sortSession();
     invoke(TauriCommand.SessionWriteData, {
       id: activeSession.value.id,
       content: JSON.stringify(activeSession.value),
@@ -124,6 +127,7 @@ export const useSessionStore = defineStore('session', () => {
     const time = Date.now();
     Object.assign(message, payload);
     target.latest = time;
+    sortSession();
     invoke(TauriCommand.SessionWriteData, {
       id: target.id,
       content: JSON.stringify(target),
@@ -142,10 +146,16 @@ export const useSessionStore = defineStore('session', () => {
       return;
     }
     Object.assign(target, payload);
+    sortSession();
     invoke(TauriCommand.SessionWriteData, {
       id: target.id,
       content: JSON.stringify(target),
     });
+  };
+
+  // 更新排序
+  const sortSession = () => {
+    sessions.value.sort((pre, next) => next.latest - pre.latest);
   };
 
   return {
