@@ -1,5 +1,5 @@
 <template>
-  <div class="context-menu-item pvert-2 phorz-8">
+  <div class="context-menu-item pvert-2 phorz-8" data-auto-close>
     <slot />
   </div>
 </template>

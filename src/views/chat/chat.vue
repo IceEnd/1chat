@@ -167,7 +167,7 @@ watch(() => session.value, async () => {
       model: systemStore.config.model,
       messages: namePrompts(session.value.messages.slice(0, 3)),
     });
-    sessionStore.updateSession({
+    sessionStore.updateSession(session.value.id, {
       name,
     });
   } catch {

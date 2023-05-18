@@ -15,5 +15,8 @@
   "Proxy & Model": "Proxy & Model",
   "API Host": "API Host",
   "Model": "Model",
-  "Yesterday": "Yesterday"
+  "Yesterday": "Yesterday",
+  "Delete": "Delete",
+  "Sticky on Top": "Sticky on Top",
+  "Unsticky": "Unsticky"
 }

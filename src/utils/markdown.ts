@@ -1,4 +1,5 @@
 import MarkdownIt from 'markdown-it';
+import markdownLink from 'markdown-it-link-attributes';
 import hljs from 'highlight.js';
 import CopyDocument from '@/assets/copy-document.svg?raw';
 
@@ -32,6 +33,8 @@ const md = new MarkdownIt({
     ].join('');
   },
 });
+
+md.use(markdownLink, { attrs: { target: '_blank', rel: 'noopener' } });
 
 export const renderMarkDown = (content: string): string => {
   return md.render(content);

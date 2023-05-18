@@ -17,6 +17,7 @@
     "element-plus": "^2.3.3",
     "eventsource-parser": "^1.0.0",
     "markdown-it": "^13.0.1",
+    "markdown-it-link-attributes": "^4.0.1",
     "pinia": "^2.0.35",
     "uuid": "^9.0.0",
     "vue": "^3.2.45",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.3",
     "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/node": "^18.7.10",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.0",

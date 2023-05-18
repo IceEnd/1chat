@@ -41,6 +41,7 @@
             <div class="content-wrap phorz-12">
               <div class="content ps-r">
                 <div
+                  class="user-content"
                   v-if="message.role === Role.User"
                   :style="{
                     fontSize: `${systemStore.config.fontSize}px`
@@ -322,6 +323,16 @@ defineExpose({
       .code-helper {
         opacity: 1;
       }
+    }
+  }
+}
+</style>
+
+<style lang="less">
+.dark {
+  .user-content {
+    &::selection {
+      background-color: var(--el-color-primary);
     }
   }
 }

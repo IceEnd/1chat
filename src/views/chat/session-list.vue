@@ -28,7 +28,10 @@
         >
           <li
             class="session phorz-10 pvert-16 d-flex ps-r"
-            :class="{ active: store.active === item.id }"
+            :class="{
+              'sticky-top': item.stickyOnTop,
+              active: store.active === item.id,
+            }"
             @click="store.switchSession(item.id)"
           >
             <div class="avatar" />
@@ -42,6 +45,19 @@
           </li>
 
           <template #menu>
+            <context-menu-item
+              v-if="item.stickyOnTop"
+              @click="handleSticky(item.id, false)"
+            >
+              {{ $t('Unsticky') }}
+            </context-menu-item>
+            <context-menu-item
+              v-else
+              @click="handleSticky(item.id, true)"
+            >
+              {{ $t('Sticky on Top') }}
+            </context-menu-item>
+            <el-divider class="mvert-4" />
             <context-menu-item @click="handleDelete(item.id)">
               {{ $t('Delete') }}
             </context-menu-item>
@@ -68,7 +84,10 @@ const sessions = computed(() => {
   if (!searchKey.value) {
     return store.sessions;
   }
-  return store.sessions.filter(item => item.name.toLowerCase().includes(searchKey.value));
+  return store.sessions.filter(item => item.name
+    .toLowerCase()
+    .includes(searchKey.value.toLowerCase()),
+  );
 });
 
 const renderAbstract = (session: ChatSession.ISession) => {
@@ -80,6 +99,10 @@ const renderAbstract = (session: ChatSession.ISession) => {
 };
 
 const handleDelete = (id: string) => store.deleteSession(id);
+
+const handleSticky = (id: string, stickyOnTop: boolean) => store.updateSession(id, {
+  stickyOnTop,
+});
 </script>
 
 <style lang="less" scoped>
@@ -96,6 +119,9 @@ const handleDelete = (id: string) => store.deleteSession(id);
 
   .session {
     user-select: none;
+    &.sticky-top {
+      background-color: var(--link-sticky-bg-color);
+    }
     &.active {
       background-color: var(--link-active-bg-color);
     }
@@ -121,7 +147,7 @@ const handleDelete = (id: string) => store.deleteSession(id);
     }
 
     &-title {
-      font-size: var(--font-size-4);
+      font-size: var(--font-size-3);
     }
 
     &-abstract {
@@ -132,7 +158,7 @@ const handleDelete = (id: string) => store.deleteSession(id);
 
   .date {
     cursor: default;
-    right: 5px;
+    right: 6px;
     top: 5px;
   }
 }

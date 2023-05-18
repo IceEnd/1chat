@@ -135,13 +135,14 @@ export const useSessionStore = defineStore('session', () => {
   };
 
   // 更新会话
-  const updateSession = (payload: {
+  const updateSession = (id: string, payload: {
     name?: string,
     created?: number,
     latest?: number,
     messages?: ChatSession.IMessage[],
+    stickyOnTop?: boolean,
   }) => {
-    const target = sessions.value.find(item => item.id === active.value);
+    const target = sessions.value.find(item => item.id === id);
     if (!target) {
       return;
     }
@@ -155,7 +156,17 @@ export const useSessionStore = defineStore('session', () => {
 
   // 更新排序
   const sortSession = () => {
-    sessions.value.sort((pre, next) => next.latest - pre.latest);
+    // 获取所有置顶的session
+    const stickySessions = sessions.value
+      .filter((session) => session.stickyOnTop)
+      .sort((pre, next) => next.latest - pre.latest);
+
+    // 获取所有非置顶的session
+    const normalSessions =  sessions.value
+      .filter((session) => !session.stickyOnTop)
+      .sort((pre, next) => next.latest - pre.latest);
+
+    sessions.value = stickySessions.concat(normalSessions);
   };
 
   return {

@@ -15,5 +15,8 @@
   "Proxy & Model": "代理 & 模型",
   "API Host": "API Host",
   "Model": "模型",
-  "Yesterday": "昨天"
+  "Yesterday": "昨天",
+  "Delete": "删除",
+  "Sticky on Top": "置顶",
+  "Unsticky": "取消置顶"
 }
