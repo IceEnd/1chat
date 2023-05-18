@@ -25,7 +25,7 @@
 
 | | |
 |:-------:|:-----:|
-| ![image](https://user-images.githubusercontent.com/11556339/236784044-fa4ea34f-dc18-4f2e-be45-5b485cd56a6d.png) | ![image](https://user-images.githubusercontent.com/11556339/236784204-428e7c29-0207-419f-acc3-b2bee2c15666.png) |
+| ![image](https://user-images.githubusercontent.com/11556339/239234826-b5badc1a-f602-4d5f-bf31-c9a3e05d1cb4.png) | ![image](https://user-images.githubusercontent.com/11556339/239234871-08575f71-320e-4fac-8b9a-769d6304ede3.png) |
 
 ## 功能 :hammer_and_wrench:
 
