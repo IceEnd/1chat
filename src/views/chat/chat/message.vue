@@ -30,11 +30,10 @@
                 :icon="UserFilled"
               />
 
-              <el-avatar
-                shape="square"
+              <avatar
                 v-if="message.role === Role.Assistant"
                 :size="42"
-                :src="CatAvatar"
+                :avatar="session.assistantAvatar"
               />
             </div>
 
@@ -118,8 +117,8 @@ import { useI18n } from 'vue-i18n';
 import { useSystemStore, useSessionStore } from '@/store';
 import { renderMarkDown } from '@/utils';
 import { Role } from '@/constants';
-import CatAvatar from '@/assets/default-avatar.jpg';
-import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from './symbol';
+import Avatar from '../avatar.vue';
+import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from '../symbol';
 import MessageDate from './date.vue';
 
 const systemStore = useSystemStore();

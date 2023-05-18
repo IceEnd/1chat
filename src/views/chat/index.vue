@@ -6,6 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import SessionList from './session-list.vue';
-import Chat from './chat.vue';
+import SessionList from './list/index.vue';
+import Chat from './chat/index.vue';
 </script>

@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { inject, ComputedRef } from 'vue';
-import { SESSION_SYMBOL } from './symbol';
+import { SESSION_SYMBOL } from '../symbol';
 
 const session = inject(SESSION_SYMBOL) as ComputedRef<ChatSession.ISession>;
 </script>

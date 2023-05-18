@@ -118,11 +118,12 @@ onBeforeUnmount(() => {
 }
 
 .context-menu {
-  min-width: 100px;
-  background: var(--el-bg-color-overlay);
+  min-width: 80px;
+  backdrop-filter: blur(20px);
   border: 1px solid var(--el-border-color-light);
-  border-radius: var(--border-radius-large);
+  border-radius: 6px;
   z-index: 100000;
   font-size: var(--font-size-3);
+  overflow: hidden;
 }
 </style>

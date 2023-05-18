@@ -8,6 +8,7 @@
 .context-menu-item {
   border-radius: var(--border-radius-regular);
   cursor: default;
+  font-size: 12px;
 
   &:hover {
     background-color: var(--el-color-primary);

@@ -28,7 +28,7 @@ import Empty from './empty.vue';
 import Toolbar from './toolbar.vue';
 import Message from './message.vue';
 import Sender from './sender.vue';
-import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from './symbol';
+import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from '../symbol';
 
 const sessionStore = useSessionStore();
 const systemStore = useSystemStore();

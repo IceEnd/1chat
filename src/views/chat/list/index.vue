@@ -22,63 +22,82 @@
 
     <el-scrollbar class="ps-r" style="flex: 1 1 auto;">
       <ul>
-        <context-menu
+        <li
           v-for="item in sessions"
           :key="item.id"
         >
-          <li
-            class="session phorz-10 pvert-16 d-flex ps-r"
-            :class="{
-              'sticky-top': item.stickyOnTop,
-              active: store.active === item.id,
-            }"
-            @click="store.switchSession(item.id)"
-          >
-            <div class="avatar" />
-            <div class="content pl-10 pr-6">
-              <p class="content-title ellipsis pr-30 pb-4">{{ item.name }}</p>
-              <p class="content-abstract ellipsis">{{ renderAbstract(item) }}</p>
-            </div>
-            <div class="ps-a t-assist date">
-              {{ getChatDate(item.latest) }}
-            </div>
-          </li>
+          <context-menu>
+            <div
+              class="session phorz-10 pvert-16 d-flex ps-r"
+              :class="{
+                'sticky-top': item.stickyOnTop,
+                active: store.active === item.id,
+              }"
+              @click="store.switchSession(item.id)"
+            >
+              <avatar
+                class="avatar"
+                :avatar="item.assistantAvatar"
+                :size="36"
+              />
 
-          <template #menu>
-            <context-menu-item
-              v-if="item.stickyOnTop"
-              @click="handleSticky(item.id, false)"
-            >
-              {{ $t('Unsticky') }}
-            </context-menu-item>
-            <context-menu-item
-              v-else
-              @click="handleSticky(item.id, true)"
-            >
-              {{ $t('Sticky on Top') }}
-            </context-menu-item>
-            <el-divider class="mvert-4" />
-            <context-menu-item @click="handleDelete(item.id)">
-              {{ $t('Delete') }}
-            </context-menu-item>
-          </template>
-        </context-menu>
+              <div class="content pl-10 pr-6">
+                <p class="content-title ellipsis pr-30 pb-4">{{ item.name }}</p>
+                <p class="content-abstract ellipsis">{{ renderAbstract(item) }}</p>
+              </div>
+              <div class="ps-a t-assist date">
+                {{ getChatDate(item.latest) }}
+              </div>
+            </div>
+
+            <template #menu>
+              <context-menu-item
+                v-if="item.stickyOnTop"
+                @click="handleSticky(item.id, false)"
+              >
+                {{ $t('Unsticky') }}
+              </context-menu-item>
+              <context-menu-item
+                v-else
+                @click="handleSticky(item.id, true)"
+              >
+                {{ $t('Sticky on Top') }}
+              </context-menu-item>
+              <context-menu-item @click="handleRename(item.id)">
+                {{ $t('Rename') }}
+              </context-menu-item>
+              <el-divider class="mvert-4" />
+              <context-menu-item @click="handleDelete(item.id)">
+                {{ $t('Delete') }}
+              </context-menu-item>
+            </template>
+          </context-menu>
+        </li>
       </ul>
     </el-scrollbar>
   </section>
+
+  <rename />
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, provide } from 'vue';
 import { Search, Plus } from '@element-plus/icons-vue';
 import { useSessionStore } from '@/store/session';
 import { getChatDate } from '@/utils';
 import ContextMenu from '@/components/context-menu/index.vue';
 import ContextMenuItem from '@/components/context-menu/menu-item.vue';
+import Rename from './rename.vue';
+import Avatar from '../avatar.vue';
+import { RENAME_VISIBLE, CONTEXT_ID } from '../symbol';
 
 const store = useSessionStore();
 // 目前只简单检索标题
 const searchKey = ref('');
+const renameVisible = ref(false);
+const contextId = ref('');
+provide(RENAME_VISIBLE, renameVisible);
+provide(CONTEXT_ID, contextId);
 
 const sessions = computed(() => {
   if (!searchKey.value) {
@@ -103,6 +122,11 @@ const handleDelete = (id: string) => store.deleteSession(id);
 const handleSticky = (id: string, stickyOnTop: boolean) => store.updateSession(id, {
   stickyOnTop,
 });
+
+const handleRename = (id: string) => {
+  renameVisible.value = true;
+  contextId.value = id;
+};
 </script>
 
 <style lang="less" scoped>
@@ -127,17 +151,6 @@ const handleSticky = (id: string, stickyOnTop: boolean) => store.updateSession(i
     }
   }
 
-  .avatar {
-    flex: 0 0 36px;
-    width: 36px;
-    height: 36px;
-    border-radius: var(--border-radius-regular);
-    overflow: hidden;
-    background-image: url(@/assets/default-avatar.jpg);
-    background-size: cover;
-    opacity: .75;
-  }
-
   .content {
     flex: 1 1 auto;
     overflow: hidden;
@@ -160,6 +173,14 @@ const handleSticky = (id: string, stickyOnTop: boolean) => store.updateSession(i
     cursor: default;
     right: 6px;
     top: 5px;
+  }
+
+  .avatar {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--border-radius-regular);
+    opacity: .85;
   }
 }
 </style>
