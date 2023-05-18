@@ -20,6 +20,8 @@ declare namespace ChatSession {
     created: number,
     latest: number,
     messages: IMessage[],
+    stickyOnTop?: boolean,
+    assistantAvatar?: import('@/constants').AssistantAvatars,
   }
 
   interface IMessage {

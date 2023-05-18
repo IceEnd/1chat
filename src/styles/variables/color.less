@@ -1,13 +1,15 @@
 :root {
   --app-nav-bg-color: rgba(#fff, 0.75);
-  --link-active-bg-color: #eee;
+  --link-active-bg-color: #eaeaea;
+  --link-sticky-bg-color: #efefef;
   --chat-empty-bg-color: var(--app-nav-bg-color);
 }
 
 html {
   &.dark {
     --app-nav-bg-color: rgba(#3c3c3c, 0.75);
-    --link-active-bg-color: #333;
+    --link-active-bg-color: #3c3c3c;
+    --link-sticky-bg-color: var(--app-nav-bg-color);
 
     .markdown-body {
       color-scheme: dark;

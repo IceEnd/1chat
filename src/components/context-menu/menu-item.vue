@@ -1,5 +1,5 @@
 <template>
-  <div class="context-menu-item pvert-2 phorz-8">
+  <div class="context-menu-item pvert-2 phorz-8" data-auto-close>
     <slot />
   </div>
 </template>
@@ -8,6 +8,7 @@
 .context-menu-item {
   border-radius: var(--border-radius-regular);
   cursor: default;
+  font-size: 12px;
 
   &:hover {
     background-color: var(--el-color-primary);

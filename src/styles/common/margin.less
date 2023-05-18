@@ -55,8 +55,8 @@
 // 上下间距
 .m-vert(@n, @i: 0) when (@i =< @n) {
   .mvert-@{i} {
-    margin-top: @i + 0px;
-    margin-bottom: @i + 0px;
+    margin-top: @i + 0px !important;
+    margin-bottom: @i + 0px !important;
   }
   .m-vert(@n, (@i + 2));
 }

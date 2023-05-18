@@ -49,3 +49,12 @@ export enum Model {
 
 // 默认代理
 export const DEFAULT_HOST = 'https://api.openai.com';
+
+// 头像
+export enum AssistantAvatars {
+  Logo = 'logo',
+  Robot = 'robot',
+  ChatGPT = 'chatgpt',
+  Translation = 'translation',
+  Coding = 'coding'
+}

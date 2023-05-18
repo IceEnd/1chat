@@ -28,7 +28,7 @@ import Empty from './empty.vue';
 import Toolbar from './toolbar.vue';
 import Message from './message.vue';
 import Sender from './sender.vue';
-import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from './symbol';
+import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from '../symbol';
 
 const sessionStore = useSessionStore();
 const systemStore = useSystemStore();
@@ -167,7 +167,7 @@ watch(() => session.value, async () => {
       model: systemStore.config.model,
       messages: namePrompts(session.value.messages.slice(0, 3)),
     });
-    sessionStore.updateSession({
+    sessionStore.updateSession(session.value.id, {
       name,
     });
   } catch {

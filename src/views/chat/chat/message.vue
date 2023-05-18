@@ -30,17 +30,17 @@
                 :icon="UserFilled"
               />
 
-              <el-avatar
-                shape="square"
+              <avatar
                 v-if="message.role === Role.Assistant"
                 :size="42"
-                :src="CatAvatar"
+                :avatar="session.assistantAvatar"
               />
             </div>
 
             <div class="content-wrap phorz-12">
               <div class="content ps-r">
                 <div
+                  class="user-content"
                   v-if="message.role === Role.User"
                   :style="{
                     fontSize: `${systemStore.config.fontSize}px`
@@ -117,8 +117,8 @@ import { useI18n } from 'vue-i18n';
 import { useSystemStore, useSessionStore } from '@/store';
 import { renderMarkDown } from '@/utils';
 import { Role } from '@/constants';
-import CatAvatar from '@/assets/default-avatar.jpg';
-import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from './symbol';
+import Avatar from '../avatar.vue';
+import { SESSION_SYMBOL, AUTO_SCROLL_TO_BOTTOM } from '../symbol';
 import MessageDate from './date.vue';
 
 const systemStore = useSystemStore();
@@ -322,6 +322,16 @@ defineExpose({
       .code-helper {
         opacity: 1;
       }
+    }
+  }
+}
+</style>
+
+<style lang="less">
+.dark {
+  .user-content {
+    &::selection {
+      background-color: var(--el-color-primary);
     }
   }
 }
