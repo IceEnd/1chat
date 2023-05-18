@@ -7,7 +7,7 @@ import { v4 } from 'uuid';
 import { useI18n } from 'vue-i18n';
 import { invoke } from '@tauri-apps/api/tauri';
 import { defineStore } from 'pinia';
-import { Model, TauriCommand } from '@/constants';
+import { Model, TauriCommand, AssistantAvatars } from '@/constants';
 
 export const useSessionStore = defineStore('session', () => {
   const sessions = ref<ChatSession.ISession[]>([]);
@@ -141,6 +141,7 @@ export const useSessionStore = defineStore('session', () => {
     latest?: number,
     messages?: ChatSession.IMessage[],
     stickyOnTop?: boolean,
+    assistantAvatar?: AssistantAvatars,
   }) => {
     const target = sessions.value.find(item => item.id === id);
     if (!target) {

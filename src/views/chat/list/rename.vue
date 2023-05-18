@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     append-to-body
-    class="rename-dialog"
+    class="rename-dialog hide-head no-padding"
     v-model="visible"
     @opened="handleOpened"
   >
@@ -31,7 +31,6 @@ const visible = inject(RENAME_VISIBLE) as Ref<boolean>;
 const id = inject(CONTEXT_ID) as Ref<string>;
 
 watch(() => id.value, (v) => {
-  console.log(v);
   const target = sessionStore.sessions.find(item => item.id === v);
   if (target) {
     return name.value = target.name;
@@ -57,11 +56,7 @@ const handleSubmit = () => {
 
 <style lang="less">
 .rename-dialog {
-  .el-dialog__header {
-    display: none;
-  }
-  .el-dialog__body {
-    padding: 0 !important;
-  }
+  border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
+  overflow: hidden;
 }
 </style>

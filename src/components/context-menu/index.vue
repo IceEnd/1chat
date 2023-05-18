@@ -31,6 +31,10 @@ const contextmenuRef = ref<HTMLDivElement | null>(null);
 const x = ref('0px');
 const y = ref('0px');
 
+const emits = defineEmits<{
+  (e: 'open'): void,
+}>();
+
 const toggle = (v?: boolean) => {
   if (v === undefined) {
     return visible.value != visible.value;
@@ -44,6 +48,7 @@ const handleContextmenu = (e: MouseEvent) => {
   hasRender.value = true;
   toggle(true);
   handlePosition(e.clientX, e.clientY);
+  emits('open');
 };
 
 const handlePosition = (left: number, top: number) => {

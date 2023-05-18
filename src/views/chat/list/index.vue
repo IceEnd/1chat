@@ -26,7 +26,7 @@
           v-for="item in sessions"
           :key="item.id"
         >
-          <context-menu>
+          <context-menu @open="handleContextMenu(item.id)" >
             <div
               class="session phorz-10 pvert-16 d-flex ps-r"
               :class="{
@@ -63,8 +63,11 @@
               >
                 {{ $t('Sticky on Top') }}
               </context-menu-item>
-              <context-menu-item @click="handleRename(item.id)">
+              <context-menu-item @click="handleRename()">
                 {{ $t('Rename') }}
+              </context-menu-item>
+              <context-menu-item @click="handleChangeAvatar()">
+                {{ $t('Change Avatar') }}
               </context-menu-item>
               <el-divider class="mvert-4" />
               <context-menu-item @click="handleDelete(item.id)">
@@ -78,6 +81,7 @@
   </section>
 
   <rename />
+  <change-avatar />
 </template>
 
 <script setup lang="ts">
@@ -88,16 +92,19 @@ import { getChatDate } from '@/utils';
 import ContextMenu from '@/components/context-menu/index.vue';
 import ContextMenuItem from '@/components/context-menu/menu-item.vue';
 import Rename from './rename.vue';
+import ChangeAvatar from './change-avatar.vue';
 import Avatar from '../avatar.vue';
-import { RENAME_VISIBLE, CONTEXT_ID } from '../symbol';
+import { RENAME_VISIBLE, CONTEXT_ID, CHANGE_AVATAR_VISIBLE } from '../symbol';
 
 const store = useSessionStore();
 // 目前只简单检索标题
 const searchKey = ref('');
 const renameVisible = ref(false);
+const changeAvatarVisible = ref(false);
 const contextId = ref('');
 provide(RENAME_VISIBLE, renameVisible);
 provide(CONTEXT_ID, contextId);
+provide(CHANGE_AVATAR_VISIBLE, changeAvatarVisible);
 
 const sessions = computed(() => {
   if (!searchKey.value) {
@@ -117,16 +124,17 @@ const renderAbstract = (session: ChatSession.ISession) => {
   return message.content;
 };
 
+const handleContextMenu = (id: string) => contextId.value = id;
+
 const handleDelete = (id: string) => store.deleteSession(id);
 
 const handleSticky = (id: string, stickyOnTop: boolean) => store.updateSession(id, {
   stickyOnTop,
 });
 
-const handleRename = (id: string) => {
-  renameVisible.value = true;
-  contextId.value = id;
-};
+const handleRename = () => renameVisible.value = true;
+
+const handleChangeAvatar = () => changeAvatarVisible.value = true;
 </script>
 
 <style lang="less" scoped>
